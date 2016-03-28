@@ -1,4 +1,3 @@
-
 -*-Three Card Monte-*-
 
 -- Game starts with a question on the main page display <div>...
