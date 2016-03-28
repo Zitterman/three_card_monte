@@ -4,51 +4,42 @@
 // Student @GA in NYC
 //  -->
 
-var cardClick = function() {
-  $(".one").click(function() {
-    $(".one").hide();
-    $(".joker-one").show();
-  });
-  $(".two").click(function() {
-    $(".two").hide();
-    $(".queen").show();
-  });
-  $(".three").click(function() {
-    $(".three").hide();
-    $(".joker-two").show();
-  });
+var startGame = function() {
+  setTimeout(function() {
+    $("#message-display p").text("20 Dollars to Play!");
+  }, 1500);
+  setTimeout(function() {
+    $("#message-display p").text("Are You Feeling lucky?");
+  }, 3000);
+  setTimeout(function() {
+    $("#message-display p").text("Lets Go!");
+  }, 4500);
 };
 
 var playButton = function() {
   $("#play-button").click(function() {
-    console.log("play button is ready");
-    $("#message-display p").text("Lets Go!");
+    $("#message-display p").text("Find the Queen to Win.");
   });
 };
+
+var cardClick = function() {
+  $(".one").on("click", function() {
+    $(".one").toggleClass("joker-one");
+  });
+  $(".two").on("click", function() {
+    $(".two").toggleClass("queen");
+  });
+  $(".three").on("click", function() {
+    $(".three").toggleClass("joker-two");
+  });
+};
+
+
 
 var quitButton = function() {
   $("#quit-button").click(function() {
     location.reload();
   });
-};
-
-var startGame = function() {
-  setTimeout(function() {
-    $("#message-display p").text("20 dollars to play");
-  }, 2500);
-};
-
-var secondMessage = function() {
-  setTimeout(function() {
-    $("#message-display p").text("Feeling lucky");
-  }, 2500);
-  thirdMessage();
-};
-
-var thirdMessage = function() {
-  setTimeout(function() {
-    $("#message-display p").text("Lets Play!");
-  }, 2500);
 };
 
 
@@ -87,7 +78,7 @@ var thirdMessage = function() {
 // When the document is ready
 $(document).ready(function() {
   startGame();
-  cardClick();
   playButton();
+  cardClick();
   quitButton();
 });

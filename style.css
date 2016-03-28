@@ -55,49 +55,42 @@ body {
 	background: red;
 }
 
-#card {
+.card {
 	width: 183px;
 	height: 275px;
 	position: absolute;
 }
 
-.one {
-	left: 59px;
+.back {
 	background-image: url(images/card.jpg);
 	background-size: cover;
 }
 
-.joker-one {
+.one {
 	left: 59px;
-	background-image: url(images/joker.jpg);
-	background-size: cover;
-	display: none;
 }
 
 .two {
 	left: 248px;
-	background-image: url(images/card.jpg);
-	background-size: cover;
-}
-
-.queen {
-	left: 248px;
-	background-image: url(images/queen.jpg);
-	background-size: cover;
-	display: none;
 }
 
 .three {
 	left: 437px;
-	background-image: url(images/card.jpg);
+}
+
+.joker-one {
+	background-image: url(images/joker.jpg);
+	background-size: cover;
+}
+
+.queen {
+	background-image: url(images/queen.jpg);
 	background-size: cover;
 }
 
 .joker-two {
-	left: 437px;
 	background-image: url(images/joker.jpg);
 	background-size: cover;
-	display: none;
 }
 
 #button-container {
@@ -116,6 +109,7 @@ body {
 	position: absolute;
 	top: 5px;
 	left: 20%;
+	cursor: pointer;
 	background: yellow;
 }
 
