@@ -4,6 +4,8 @@
 // Student @GA in NYC
 //  -->
 
+console.log('EY');
+
 var cardShow = function() {
   $(".one").addClass("joker");
   $(".two").addClass("queen");
