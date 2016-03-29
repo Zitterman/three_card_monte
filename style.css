@@ -78,18 +78,13 @@ body {
 	left: 437px;
 }
 
-.joker-one {
+.joker {
 	background-image: url(images/joker.jpg);
 	background-size: cover;
 }
 
 .queen {
 	background-image: url(images/queen.jpg);
-	background-size: cover;
-}
-
-.joker-two {
-	background-image: url(images/joker.jpg);
 	background-size: cover;
 }
 

@@ -4,6 +4,18 @@
 // Student @GA in NYC
 //  -->
 
+var cardShow = function() {
+  $(".one").addClass("joker");
+  $(".two").addClass("queen");
+  $(".three").addClass("joker");
+};
+
+var cardHide = function() {
+  $(".one").removeClass("joker");
+  $(".two").removeClass("queen");
+  $(".three").removeClass("joker");
+};
+
 var startGame = function() {
   setTimeout(function() {
     $("#message-display p").text("20 Dollars to Play!");
@@ -12,73 +24,61 @@ var startGame = function() {
     $("#message-display p").text("Are You Feeling lucky?");
   }, 3000);
   setTimeout(function() {
-    $("#message-display p").text("Lets Go!");
+    $("#message-display p").text("Find the Queen to Win!");
+    cardShow();
   }, 4500);
 };
 
 var playButton = function() {
   $("#play-button").click(function() {
-    $("#message-display p").text("Find the Queen to Win.");
+    $("#message-display p").text("");
+    cardHide();
+    pickCard();
   });
 };
 
-var cardClick = function() {
-  $(".one").on("click", function() {
-    $(".one").toggleClass("joker-one");
+var cardArray = ["joker", "queen", "joker", "joker"];
+var randomCard = cardArray[Math.floor(Math.random() * cardArray.length)];
+
+var choiceOutcome = function() {
+  if (randomCard === cardArray[1]) {
+     $("#message-display p").text("WOW, I can't believe you found her!");
+     updateMoney();
+   } else if (randomCard !== cardArray[1]) {
+     $("#message-display p").text("That's a shame.");
+     updateMoney();
+   }
+};
+
+var updateMoney = function() {
+  var money = 0;
+  var moneyHolder = $("#money-update p");
+  var total = moneyHolder.text("$" + money);
+  if (randomCard === cardArray[1]) {
+    money = money + 20;
+    return total;
+  } else if (randomCard !== cardArray[1]) {
+    money = money - 20;
+    return total;
+  }
+};
+
+var pickCard = function() {
+  $(".one").click(function() {
+    $(".one").addClass(randomCard);
+    choiceOutcome();
   });
-  $(".two").on("click", function() {
-    $(".two").toggleClass("queen");
+  $(".two").click(function() {
+    $(".two").addClass(randomCard);
+    choiceOutcome();
   });
-  $(".three").on("click", function() {
-    $(".three").toggleClass("joker-two");
+  $(".three").click(function() {
+    $(".three").addClass(randomCard);
+    choiceOutcome();
   });
 };
 
-
-
-var quitButton = function() {
-  $("#quit-button").click(function() {
-    location.reload();
-  });
-};
-
-
-
-// Set a timer for the game to begin when the screen loads
-
-// Set the play button to work and start the game
-
-// Prompt the user for whats going to happen...show the cards
-
-// Shuffle the cards
-
-// Prompt the player again and shuffle the cards again
-
-// Prompt user to make a choice
-
-// Set up listeners for the cards for when the player chooses
-
-// Set up if/else for the choices
-
-// If the player chooses the queen
-  // Lucky pick, you win 20 dollars.  Do you want to cash out while you are ahead or press your luck?
-  // Depending on choice cash out and quit or restart game with updated totals
-
-// If the player chooses the joker
-  // You lost, want to try to win your money back or quit now?
-  // Player can quit or try again... restarting game with updated totals.
-
-// When quits prompt you won/lost x dollars.
-
-
-//        Defining
-// **************************
-//         Using
-
-// When the document is ready
 $(document).ready(function() {
   startGame();
   playButton();
-  cardClick();
-  quitButton();
 });
