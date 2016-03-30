@@ -5,6 +5,7 @@
 //  -->
 
 var cardArray = ["joker", "queen", "joker"];
+var newCard = "";
 
 // Durstenfeld shuffle algorithm
 function shuffleArray(array) {
@@ -17,6 +18,11 @@ function shuffleArray(array) {
   return array;
 };
 
+var init = function() {
+    shuffled = shuffleArray(cardArray);
+    newCard = shuffled[cardArray.length-1];
+}
+
 var money = 0;
 
 var cardShow = function() {
@@ -26,14 +32,14 @@ var cardShow = function() {
 };
 
 var cardHide = function() {
-  $(".one").removeClass("joker");
-  $(".two").removeClass("queen");
-  $(".three").removeClass("joker");
+  $(".one").removeClass("joker queen");
+  $(".two").removeClass("queen joker");
+  $(".three").removeClass("joker queen");
 };
 
 var startGame = function() {
   setTimeout(function() {
-    $("#message-display p").text("20 Dollars to Play!");
+    $("#message-display p").text("$20 to Play!");
   }, 1500);
   setTimeout(function() {
     $("#message-display p").text("Are You Feeling lucky?");
@@ -54,7 +60,8 @@ var playButton = function() {
 
 var pickCard = function() {
   $(".one").click(function() {
-    $(".one").addClass(shuffleArray(cardArray[0]));
+    console.log(newCard);
+    $(".one").addClass(newCard);
     if ($(this).hasClass("queen")) {
     $("#message-display p").text("WOW, I can't believe you found her!");
     money = money + 20;
@@ -65,13 +72,13 @@ var pickCard = function() {
     $("#money-update p").text("$" + money);
     }
     setTimeout(function() {
-      $("#message-display p").text("Do you want to Keep Going or Quit?");
+      $("#message-display p").text("Do you want to Keep Playing or Quit?");
     }, 1500);
     gameChoice();
     $(".card").off();
   });
   $(".two").click(function() {
-    $(".two").addClass(shuffleArray(cardArray[1]));
+    $(".two").addClass(newCard);
     if ($(this).hasClass("queen")) {
     $("#message-display p").text("WOW, I can't believe you found her!");
     money = money + 20;
@@ -82,13 +89,13 @@ var pickCard = function() {
     $("#money-update p").text("$" + money);
     }
     setTimeout(function() {
-      $("#message-display p").text("Do you want to Keep Going or Quit?");
+      $("#message-display p").text("Do you want to Keep Playing or Quit?");
     }, 1500);
     gameChoice();
     $(".card").off();
   });
   $(".three").click(function() {
-    $(".three").addClass(shuffleArray(cardArray[2]));
+    $(".three").addClass(newCard);
     if ($(this).hasClass("queen")) {
     $("#message-display p").text("WOW, I can't believe you found her!");
     money = money + 20;
@@ -99,7 +106,7 @@ var pickCard = function() {
     $("#money-update p").text("$" + money);
     }
     setTimeout(function() {
-      $("#message-display p").text("Do you want to Keep Going or Quit?");
+      $("#message-display p").text("Do you want to Keep Playing or Quit?");
     }, 1500);
     gameChoice();
     $(".card").off();
@@ -112,17 +119,33 @@ var gameChoice = function() {
     $("#keepgoing-button").off();
   });
   $("#quit-button").click(function() {
-    $("#message-display p").text("Go on Take your Money and Run");
+    if (money < 0) {
+    $("#message-display p").text("Thank you for the $" + money * -1 + ", come back anytime!");
+  } else if (money > 0) {
+    $("#message-display p").text("Somehow you took $" + money + " of my money!");
+  } else {
+    $("#message-display p").text("Breaking even is boring...come on, play more.");
+  }
     $("#quit-button").off();
   });
 };
 
 var reRun = function() {
     $("#message-display p").text("Find the Queen to Win!");
+    init();
+    cardHide();
     cardShow();
 };
 
+var reSet = function() {
+  $("#reset-button").click(function() {
+    location.reload();
+  });
+};
+
 $(document).ready(function() {
+  init();
   startGame();
   playButton();
+  reSet();
 });
