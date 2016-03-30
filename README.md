@@ -1,5 +1,5 @@
 
--*-Three Card Monte-*-
+***Three Card Monte***
 
 -- Game starts with a question on the main page display <div>...
    "$20 to play... Find the Queen and double your money!"
@@ -35,9 +35,3 @@
    "You owe me (down total)!  Dont make me have to come looking for you!"
 
 -- When either the cash in or quit button is push the game restarts
-
-////////////////////////
-
--- As a player I want the game to look well designed and be intuitive
-
--- As a player I want to be able to quit whenever I want

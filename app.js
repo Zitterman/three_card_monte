@@ -5,7 +5,24 @@
 //  -->
 
 var cardArray = ["joker", "queen", "joker"];
-var newCard = "";
+
+var winComments = [
+  "WOW, I can't believe you found her!",
+  "Lucky you!",
+  "Nice, drinks are on you today!",
+  "Hey, my kids have to eat.",
+  "Psychic genius here!",
+  "Are you cheating?"
+];
+
+var lossComments = [
+  "That's a shame.",
+  "Oh, so close.",
+  "Next time champ!",
+  "I feel for you.",
+  "That has to be an empty feeling...",
+  "Oh...the stench of defeat!"
+];
 
 // Durstenfeld shuffle algorithm
 function shuffleArray(array) {
@@ -21,7 +38,17 @@ function shuffleArray(array) {
 var init = function() {
     shuffled = shuffleArray(cardArray);
     newCard = shuffled[cardArray.length-1];
-}
+};
+
+var initWins = function() {
+    shuffled = shuffleArray(winComments);
+    wins = shuffled[winComments.length-1];
+};
+
+var initLoss = function() {
+    shuffled = shuffleArray(lossComments);
+    lose = shuffled[lossComments.length-1];
+};
 
 var money = 0;
 
@@ -55,6 +82,8 @@ var playButton = function() {
     $("#message-display p").text("");
     cardHide();
     pickCard();
+    initWins();
+    initLoss();
   });
 };
 
@@ -63,11 +92,11 @@ var pickCard = function() {
     console.log(newCard);
     $(".one").addClass(newCard);
     if ($(this).hasClass("queen")) {
-    $("#message-display p").text("WOW, I can't believe you found her!");
+    $("#message-display p").text(wins);
     money = money + 20;
     $("#money-update p").text("$" + money);
     } else if ($(this).hasClass("joker")) {
-    $("#message-display p").text("That's a shame.");
+    $("#message-display p").text(lose);
     money = money - 20;
     $("#money-update p").text("$" + money);
     }
@@ -80,11 +109,11 @@ var pickCard = function() {
   $(".two").click(function() {
     $(".two").addClass(newCard);
     if ($(this).hasClass("queen")) {
-    $("#message-display p").text("WOW, I can't believe you found her!");
+    $("#message-display p").text(wins);
     money = money + 20;
     $("#money-update p").text("$" + money);
     } else if ($(this).hasClass("joker")) {
-    $("#message-display p").text("That's a shame.");
+    $("#message-display p").text(lose);
     money = money - 20;
     $("#money-update p").text("$" + money);
     }
@@ -97,11 +126,11 @@ var pickCard = function() {
   $(".three").click(function() {
     $(".three").addClass(newCard);
     if ($(this).hasClass("queen")) {
-    $("#message-display p").text("WOW, I can't believe you found her!");
+    $("#message-display p").text(wins);
     money = money + 20;
     $("#money-update p").text("$" + money);
     } else if ($(this).hasClass("joker")) {
-    $("#message-display p").text("That's a shame.");
+    $("#message-display p").text(lose);
     money = money - 20;
     $("#money-update p").text("$" + money);
     }
@@ -145,6 +174,8 @@ var reSet = function() {
 
 $(document).ready(function() {
   init();
+  initWins();
+  initLoss();
   startGame();
   playButton();
   reSet();
