@@ -83,15 +83,15 @@ var cardHide = function() {
 var startGame = function() {
   setTimeout(function() {
     $("#message-display p").text("$20 to Play!");
-  }, 1500);
+  }, 2500);
   setTimeout(function() {
     $("#message-display p").text("Are You Feeling lucky?");
-  }, 3000);
+  }, 4000);
   setTimeout(function() {
     $("#message-display p").text("Find the Queen to Win!");
     cardShow();
     playHighlight();
-  }, 4500);
+  }, 5500);
 };
 
 // A function to activate the play button to start their game
