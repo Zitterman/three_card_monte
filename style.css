@@ -15,17 +15,28 @@ box-sizing: inherit;
 }
 
 body {
-	background-color: green;
+	background-image: url(images/background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #logo {
-	width: 700px;
-	height: 200px;
+	width: 375px;
+	height: 250px;
 	position: absolute;
-	top: 12px;
+	top: 3px;
 	left: 50%;
-	margin-left: -350px;
-	background: brown;
+	margin-left: -187.5px;
+	background-image: url(images/logo_one.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	animation: logoimage 1.5s infinite;
+}
+
+@keyframes logoimage {
+	50% {
+		background-image: url(images/logo_two.png);
+	}
 }
 
 #message-display {
@@ -35,13 +46,12 @@ body {
 	top: 217px;
 	left: 50%;
 	margin-left: -450px;
-	background: orange;
 }
 
 #message-display p {
 	text-align: center;
 	line-height: 80px;
-	font-size: 2.2em;
+	font-size: 2.3em;
 	margin: 0;
 }
 
@@ -49,20 +59,20 @@ body {
 	width: 680px;
 	height: 275px;
 	position: absolute;
-	top: 302px;
+	top: 292px;
 	left: 50%;
 	margin-left: -340px;
-	background: red;
 }
 
 .card {
 	width: 183px;
 	height: 275px;
 	position: absolute;
+	cursor:	pointer;
 }
 
 .back {
-	background-image: url(images/card.jpg);
+	background-image: url(images/card.png);
 	background-size: cover;
 }
 
@@ -79,78 +89,87 @@ body {
 }
 
 .joker {
-	background-image: url(images/joker.jpg);
+	background-image: url(images/joker.png);
 	background-size: cover;
 }
 
 .queen {
-	background-image: url(images/queen.jpg);
+	background-image: url(images/queen.png);
 	background-size: cover;
 }
 
 #button-container {
 	width: 700px;
-	height: 60px;
+	height: 100px;
 	position: absolute;
-	top: 582px;
+	top: 572px;
 	left: 50%;
 	margin-left: -350px;
-	background: lightblue;
 }
 
 #reset-button {
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
 	position: absolute;
 	top: 5px;
-	left: 11%;
+	left: 8%;
 	cursor: pointer;
-	background: yellow;
+	background-image: url(images/reset.png);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #play-button {
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
 	position: absolute;
 	top: 5px;
-	left: 20%;
+	left: 22%;
 	cursor: pointer;
-	background: yellow;
+	background-image: url(images/play.png);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #money-update {
-	width: 300px;
-	height: 50px;
+	width: 200px;
+	height: 100px;
 	position: absolute;
 	top: 5px;
 	left: 50%;
-	margin-left: -150px;
-	background: pink;
+	margin-left: -100px;
+	background-image: url(images/pig.png);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #money-update p {
 	text-align: center;
-	line-height: 50px;
+	line-height: 70px;
 	font-size: 1.4em;
 	margin: 0;
 }
 
-#keepgoing-button {
-	width: 50px;
-	height: 50px;
+#playon-button {
+	width: 100px;
+	height: 100px;
 	position: absolute;
 	top: 5px;
-	left: 73%;
+	left: 65%;
 	cursor: pointer;
-	background: yellow;
+	background-image: url(images/play_on.png);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #quit-button {
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
 	position: absolute;
 	top: 5px;
-	left: 82%;
+	left: 79%;
 	cursor: pointer;
-	background: yellow;
+	background-image: url(images/quit.png);
+	background-size: cover;
+	background-repeat: no-repeat;
 }

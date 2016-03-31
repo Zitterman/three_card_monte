@@ -90,6 +90,7 @@ var startGame = function() {
   setTimeout(function() {
     $("#message-display p").text("Find the Queen to Win!");
     cardShow();
+    playHighlight();
   }, 4500);
 };
 
@@ -119,7 +120,10 @@ var pickCard = function() {
     $("#money-update p").text("$" + money);
     }
     setTimeout(function() {
-      $("#message-display p").text("Do you want to Keep Playing or Quit?");
+      $("#message-display p").text("Do you want to Play On or Quit?");
+    }, 2000);
+    setTimeout(function() {
+      playonQuit();
     }, 2000);
     gameChoice();
     $(".card").off();
@@ -136,7 +140,10 @@ var pickCard = function() {
     $("#money-update p").text("$" + money);
     }
     setTimeout(function() {
-      $("#message-display p").text("Do you want to Keep Playing or Quit?");
+      $("#message-display p").text("Do you want to Play On or Quit?");
+    }, 2000);
+    setTimeout(function() {
+      playonQuit();
     }, 2000);
     gameChoice();
     $(".card").off();
@@ -153,7 +160,10 @@ var pickCard = function() {
     $("#money-update p").text("$" + money);
     }
     setTimeout(function() {
-      $("#message-display p").text("Do you want to Keep Playing or Quit?");
+      $("#message-display p").text("Do you want to Play On or Quit?");
+    }, 2000);
+    setTimeout(function() {
+      playonQuit();
     }, 2000);
     gameChoice();
     $(".card").off();
@@ -162,9 +172,9 @@ var pickCard = function() {
 
 // A function for initiating the user choices after a round of play
 var gameChoice = function() {
-  $("#keepgoing-button").click(function() {
+  $("#playon-button").click(function() {
     reRun();
-    $("#keepgoing-button").off();
+    $("#playon-button").off();
   });
   $("#quit-button").click(function() {
     if (money < 0) {
@@ -172,15 +182,17 @@ var gameChoice = function() {
   } else if (money > 0) {
     $("#message-display p").text("Somehow you took $" + money + " of my money!");
   } else {
-    $("#message-display p").text("Breaking even is boring...come on, play more.");
+    $("#message-display p").text("Breaking even is boring...play more.");
   }
-    $("#quit-button").off();
+  resetHighlight();
+  $("#quit-button").off();
   });
 };
 
 // A function for the user to continue playing after the round is over
 var reRun = function() {
     $("#message-display p").text("Find the Queen to Win!");
+    playHighlight();
     init();
     cardHide();
     cardShow();
@@ -191,6 +203,29 @@ var reSet = function() {
   $("#reset-button").click(function() {
     location.reload();
   });
+};
+
+// A funtion to highlight the play button at the appropriate times
+var playHighlight = function() {
+  $("#play-button").css("background-image", "url(images/play_hl.png)");
+  setTimeout(function() {
+    $("#play-button").css("background-image", "url(images/play.png)");
+  }, 2500);
+};
+
+// A funtion to highlight the play on and quit buttons at the appropriate times
+var playonQuit = function() {
+  $("#playon-button").css("background-image", "url(images/play_on_hl.png)");
+  $("#quit-button").css("background-image", "url(images/quit_hl.png)");
+  setTimeout(function() {
+    $("#playon-button").css("background-image", "url(images/play_on.png)");
+    $("#quit-button").css("background-image", "url(images/quit.png)");
+  }, 2500);
+};
+
+// A funtion to highlight the reset button at the appropriate times
+var resetHighlight = function() {
+  $("#reset-button").css("background-image", "url(images/reset_hl.png)");
 };
 
 // To be ready when the page loads
