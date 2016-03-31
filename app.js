@@ -4,24 +4,33 @@
 // Student @GA in NYC
 //  -->
 
+// An array of the card face classes to be randomly placed on each card
 var cardArray = ["joker", "queen", "joker"];
 
+// An array of if user win comments to be randomly selected
 var winComments = [
   "WOW, I can't believe you found her!",
   "Lucky you!",
   "Nice, drinks are on you today!",
   "Hey, my kids have to eat.",
   "Psychic genius here!",
-  "Are you cheating?"
+  "Are you cheating?",
+  "You don't have to try so hard.",
+  "Show off!",
+  "Ok, ok, lets take it easy."
 ];
 
+// An array of if user loss comments to be randomly selected
 var lossComments = [
   "That's a shame.",
   "Oh, so close.",
   "Next time champ!",
   "I feel for you.",
   "That has to be an empty feeling...",
-  "Oh...the stench of defeat!"
+  "Oh...the stench of defeat!",
+  "There's always next time.",
+  "Does it hurt?",
+  "I'm having steak tonight!"
 ];
 
 // Durstenfeld shuffle algorithm
@@ -35,35 +44,42 @@ function shuffleArray(array) {
   return array;
 };
 
+// A function for initiating the cardArray shuffle for every game turn
 var init = function() {
     shuffled = shuffleArray(cardArray);
     newCard = shuffled[cardArray.length-1];
 };
 
+// A function for initiating the winComments shuffle for every game turn
 var initWins = function() {
     shuffled = shuffleArray(winComments);
     wins = shuffled[winComments.length-1];
 };
 
+// A function for initiating the lossComments shuffle for every game turn
 var initLoss = function() {
     shuffled = shuffleArray(lossComments);
     lose = shuffled[lossComments.length-1];
 };
 
+// A var to set money to zero for keeping track of the users win/loss total
 var money = 0;
 
+// A function to show the faces of the cards just prior to the game beginning for the user
 var cardShow = function() {
   $(".one").addClass("joker");
   $(".two").addClass("queen");
   $(".three").addClass("joker");
 };
 
+// A function to hide the faces of the cards just prior to the game beginning for the user
 var cardHide = function() {
   $(".one").removeClass("joker queen");
   $(".two").removeClass("queen joker");
   $(".three").removeClass("joker queen");
 };
 
+// A function to start messaging the user when the page loads
 var startGame = function() {
   setTimeout(function() {
     $("#message-display p").text("$20 to Play!");
@@ -77,6 +93,7 @@ var startGame = function() {
   }, 4500);
 };
 
+// A function to activate the play button to start their game
 var playButton = function() {
   $("#play-button").click(function() {
     $("#message-display p").text("");
@@ -87,6 +104,7 @@ var playButton = function() {
   });
 };
 
+// A function to initiate the events for whichever card is chosen
 var pickCard = function() {
   $(".one").click(function() {
     console.log(newCard);
@@ -102,7 +120,7 @@ var pickCard = function() {
     }
     setTimeout(function() {
       $("#message-display p").text("Do you want to Keep Playing or Quit?");
-    }, 1500);
+    }, 2000);
     gameChoice();
     $(".card").off();
   });
@@ -119,7 +137,7 @@ var pickCard = function() {
     }
     setTimeout(function() {
       $("#message-display p").text("Do you want to Keep Playing or Quit?");
-    }, 1500);
+    }, 2000);
     gameChoice();
     $(".card").off();
   });
@@ -136,12 +154,13 @@ var pickCard = function() {
     }
     setTimeout(function() {
       $("#message-display p").text("Do you want to Keep Playing or Quit?");
-    }, 1500);
+    }, 2000);
     gameChoice();
     $(".card").off();
   });
 };
 
+// A function for initiating the user choices after a round of play
 var gameChoice = function() {
   $("#keepgoing-button").click(function() {
     reRun();
@@ -159,6 +178,7 @@ var gameChoice = function() {
   });
 };
 
+// A function for the user to continue playing after the round is over
 var reRun = function() {
     $("#message-display p").text("Find the Queen to Win!");
     init();
@@ -166,12 +186,14 @@ var reRun = function() {
     cardShow();
 };
 
+// A function that acts like a reset button for the game for the user
 var reSet = function() {
   $("#reset-button").click(function() {
     location.reload();
   });
 };
 
+// To be ready when the page loads
 $(document).ready(function() {
   init();
   initWins();
